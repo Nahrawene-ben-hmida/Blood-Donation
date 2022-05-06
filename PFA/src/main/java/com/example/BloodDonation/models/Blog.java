@@ -3,9 +3,15 @@ package com.example.BloodDonation.models;
 
 import javax.persistence.*;
 
+// Please add the Lombok annotation to be more flexible : https://www.baeldung.com/intro-to-project-lombok 
 @Entity
 @Table
-public class Blog {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Blog 
+{
     @Id
     @SequenceGenerator(name = "blog_sequence",
     sequenceName = "blog_sequence", allocationSize = 1)
@@ -17,18 +23,6 @@ public class Blog {
     private String description;
     private String imageURL;
 
-    public Blog() {}
-
-    public Blog(Long id
-            , String titre
-            , String description
-            , String imageURL) {
-        this.id = id;
-        this.titre = titre;
-        this.description = description;
-        this.imageURL = imageURL;
-    }
-
     public Blog(String titre
             , String description,
                 String imageURL) {
@@ -36,20 +30,5 @@ public class Blog {
         this.description = description;
         this.imageURL = imageURL;
     }
-
-    public Long getId() {return id;}
-
-    public void setId(Long id) {this.id = id;}
-
-    public String getTitre() {return titre;}
-
-    public void setTitre(String titre) {this.titre = titre;}
-
-    public String getDescription() {return description;}
-
-    public void setDescription(String description) {this.description = description;}
-
-    public String getImageURL() {return imageURL;}
-
-    public void setImageURL(String imageURL) {this.imageURL = imageURL;}
 }
+

@@ -10,14 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/blog")
+@RequestMapping("/blog/")
 public class BlogController {
 
-    private BlogService blogService;
     @Autowired
-    public BlogController(BlogService blogService) {
-        this.blogService = blogService;
-    }
+    private BlogService blogService;
+
     @GetMapping
     public List<Blog> getBlog(){
         return blogService.getBlog();
@@ -26,7 +24,7 @@ public class BlogController {
     public Optional<Blog> getBlogById(@PathVariable Long id){
         return blogService.getBlogById(id);
     }
-    @PostMapping
+    @PostMapping("addNewBlog")
     public void addNewBlog(@RequestBody Blog blog){
         blogService.addNewBlog(blog);
     }
